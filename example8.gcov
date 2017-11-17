@@ -1,0 +1,47 @@
+        -:    0:Source:testCase1B.cpp
+        -:    0:Graph:testCase1B.gcno
+        -:    0:Data:testCase1B.gcda
+        -:    0:Runs:9
+        -:    0:Programs:1
+        -:    1:#include <iostream>                     // Preprocessor Directive
+        -:    2:using namespace std;                    // Using C＋＋ Standard Libeary
+        -:    3:const int n = 9;                         //The number of terms of a polynomial
+      144:    4:inline int fabs(int k)                     // Return the absolute value of k
+        -:    5:{ 
+      144:    6:    return k < 0 ? -k : k;
+        -:    7:}
+        9:    8:int main(void)                          // Main function
+        -:    9:{ 
+        -:   10:    int a[n];
+       27:   11:    while (cin >> a[0]) {               // Input coefficients
+       81:   12:        for (int i = 1; i < n; i++)  
+       72:   13:            cin >> a[i];
+        9:   14:        bool first = true;              // Set the mark for the first term
+       90:   15:        for (int i = 0; i < n; i++)
+       81:   16:            if (a[i]) {               //Output non-zero terms
+       81:   17:                if (first) {           // Deal with the first term
+        9:   18:                    if (a[i] == -1 && i < n - 1)    // The current term is -1
+    #####:   19:                        cout << '-';
+        9:   20:                    else if (a[i] != 1 || i == n - 1)   // The current is not 1
+        9:   21:                        cout << a[i];
+        9:   22:                    if (i == n - 2) // If the exponent is 1, don’t output the exponent; else output the exponent.
+    #####:   23:                        cout << 'x';
+        9:   24:                    else if (i < n - 0)           
+        9:   25:                        cout << "x^" << n - i - 1;
+        9:   26:                    first = false;  // Reserve the mark of the first term of the polynomial
+        -:   27:                } else {         //Output the sign and the absolute value
+       72:   28:                    cout << ' ' << (a[i] < 0 ? '-' : '+') << ' ';  //Output the sign
+       72:   29:                    if (fabs(a[i]) != 1 || i == n - 1)         //If the coefficient is 1, don’t output it
+       72:   30:                        cout << fabs(a[i]);
+       72:   31:                    if (i == n - 2)  // If the exponent is 1, don’t output the exponent; else output the exponent.
+        9:   32:                        cout << 'x';
+       63:   33:                    else if (i < n - 1)
+       54:   34:                        cout << "x^" << n - i - 1;
+        -:   35:                }
+        -:   36:            }
+        9:   37:        if (first)                  // If all coefficients are 0, output 0.
+    #####:   38:            cout << 0;
+        9:   39:        cout << endl;
+        -:   40:    }
+        9:   41:    return 0;
+       27:   42:}

@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import pprint
 class CoverageInfor:
 
 	def __init__(self):
@@ -18,28 +19,54 @@ class CoverageInfor:
 	    return i + 1
 
 	def readGcov(self):
-		file = open("example/example1.cpp.gcov", "r")
-		info = self.make2dList(self.file_len("example/example1.cpp.gcov"), 4)
-		infoDict = {} 
-		i = 0
-		for line in file:
-			tempList = line.split(':', 2 )
-			# remove leading space
-			tempChar = tempList[0].lstrip(' ')
-			if tempChar == "#####": 
-				info[i][1] = info[i][1] + 1
-				infoDict.update({i-4: info[i]})
-			elif tempChar == "-": #ignore
-				info[i][0] = info[i][0]
-				info[i][1] = info[i][1]
+		info = self.make2dList(self.file_len("example0.gcov"), 4)
+		infoDict = {}
+		result = ["t","t","t","t","t", "t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t"]
+
+		# [t+e; t+ue; f+e; f+ue]
+		for j in range(0,51):
+			filePathI = "example"
+			filePathII = ".gcov"
+			filePath = filePathI + str(j) + filePathII
+
+			file = open(filePath, "r")		
+			if result[j] == "t"	: 
+				i = 0
+				for line in file:
+					tempList = line.split(':', 2 )
+					# remove leading space
+					tempChar = tempList[0].lstrip(' ')
+					if tempChar == "#####": 
+						info[i][1] = info[i][1] + 1
+						infoDict.update({i-4: info[i]})
+					elif tempChar == "-": #ignore
+						info[i][0] = info[i][0]
+						info[i][1] = info[i][1]
+					else:
+						info[i][0] = info[i][0] + 1
+						infoDict.update({i-4: info[i]})
+					#print info[i]
+					i  = i+1
 			else:
-				info[i][0] = info[i][0] + 1
-				infoDict.update({i-4: info[i]})
-			#print info[i]
-			i  = i+1
+				i = 0
+				for line in file:
+					tempList = line.split(':', 2 )
+					# remove leading space
+					tempChar = tempList[0].lstrip(' ')
+					if tempChar == "#####": 
+						info[i][3] = info[i][3] + 1
+						infoDict.update({i-4: info[i]})
+					elif tempChar == "-": #ignore
+						info[i][2] = info[i][2]
+						info[i][3] = info[i][3]
+					else:
+						info[i][2] = info[i][2] + 1
+						infoDict.update({i-4: info[i]})
+					#print info[i]
+					i  = i+1
 
 		#print info[5:]
-		print infoDict
+		pprint.pprint(infoDict) 
  		#print file.read()
 		
 

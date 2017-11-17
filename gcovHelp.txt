@@ -24,7 +24,7 @@ How to run gcov to get coverage information:
 		gcov [executable_filename]
 
 		e.g.
-		gcov example1 -i -r
+		gcov example1 -r
 
 	To get gcov help, type:
 
