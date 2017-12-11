@@ -19,9 +19,9 @@ def rankBySuspiciousness(statementStatistic):
     sorted(suspiciousness, key = itemgetter(1),reverse = True)
     return suspiciousness;
 
-def deleteUnuse(doc):
+def deleteUnuse(doc， newFileName):
     f = open(doc,'r');
-    o = open('./test/1.txt', 'w');
+    o = open(newFilename, 'w');
     for line in f:
         str = '';
         for i in line:
