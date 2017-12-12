@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 import pprint
+import sys
 
 fileDir = "gcovResult/"
-testCaseNum = 5000;
+testCaseNum = None;
 
 class CoverageInfor:
 
@@ -30,9 +31,10 @@ class CoverageInfor:
 		# TODO: judge test case result;
 		for i in range(testCaseNum):
 			result.append('t')
-		file = open(fileDir+"bug_cases.txt")
+		file = open(fileDir+"bugCases.txt", "r")
 		for line in file:
-			result[(int)(line)] = 'f'
+			if len(line)>1:
+				result[(int)(line)] = 'f'
 
 		# [t+e; t+ue; f+e; f+ue]
 		for j in range(testCaseNum):
@@ -81,5 +83,6 @@ class CoverageInfor:
  		#print file.read()
 		
 
+testCaseNum = (int)(sys.argv[1])
 temp = CoverageInfor()
 temp.readGcov()

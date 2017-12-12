@@ -22,7 +22,6 @@ do
 	if [ $? -ne 0 ]
 	then
 		echo $i >> ../gcovResult/bug_cases.txt
-		pwd
 	fi
 	gcov $bug_program -r
 	mv $bug_program$cpp_gcov ../gcovResult/example$i.gcov

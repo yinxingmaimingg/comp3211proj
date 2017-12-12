@@ -1,47 +1,75 @@
-        -:    0:Source:testCase1-bug.cpp
-        -:    0:Graph:testCase1-bug.gcno
-        -:    0:Data:testCase1-bug.gcda
+        -:    0:Source:testCaseWithBug2.cpp
+        -:    0:Graph:testCaseWithBug2.gcno
+        -:    0:Data:testCaseWithBug2.gcda
         -:    0:Runs:4228
         -:    0:Programs:1
-        -:    1:#include <iostream>                     // Preprocessor Directive
-        -:    2:using namespace std;                    // Using C＋＋ Standard Libeary
-        -:    3:const int n = 9;                         //The number of terms of a polynomial
-    26758:    4:inline int fabs(int k)                     // Return the absolute value of k
-        -:    5:{ 
-    26758:    6:    return k < 0 ? -k : k;
-        -:    7:}
-     8456:    8:int main(void)                          // Main function
-        -:    9:{ 
-        -:   10:    int a[n];
-    12684:   11:    while (cin >> a[0]) {               // Input coefficients
-    38052:   12:        for (int i = 1; i < n; i++)  
-    33824:   13:            cin >> a[i];
-     4228:   14:        bool first = true;              // Set the mark for the first term
-    42280:   15:        for (int i = 0; i < n; i++)
-    38052:   16:            if (a[i]) {               //Output non-zero terms
-    18228:   17:                if (first) {           // Deal with the first term
-     4219:   18:                    if (a[i] == -1 && i < n - 1)    // The current term is -1
-      208:   19:                        cout << "";
-     4011:   20:                    else if (a[i] != 1 || i == n - 1)   // The current is not 1
-     3789:   21:                        cout << a[i];
-     4219:   22:                    if (i == n - 2) // If the exponent is 1, don’t output the exponent; else output the exponent.
-       15:   23:                        cout << 'x';
-     4204:   24:                    else if (i < n - 1)           
-     4188:   25:                        cout << "x^" << n - i - 1;
-     4219:   26:                    first = false;  // Reserve the mark of the first term of the polynomial
-        -:   27:                } else {         //Output the sign and the absolute value
-    14009:   28:                    cout << ' ' << (a[i] < 0 ? '-' : '+') << ' ';  //Output the sign
-    14009:   29:                    if (fabs(a[i]) != 1 || i == n - 1)         //If the coefficient is 1, don’t output it
-    12749:   30:                        cout << fabs(a[i]);
-    14009:   31:                    if (i == n - 2)  // If the exponent is 1, don’t output the exponent; else output the exponent.
-     1983:   32:                        cout << 'x';
-    12026:   33:                    else if (i < n - 1)
-    10004:   34:                        cout << "x^" << n - i - 1;
-        -:   35:                }
-        -:   36:            }
-     4228:   37:        if (first)                  // If all coefficients are 0, output 0.
-        9:   38:            cout << 0;
-     4228:   39:        cout << endl;
-        -:   40:    }
-     4228:   41:    return 0;
-    12684:   42:}
+        -:    1:#include <iostream>          //Preprocessor Directive
+        -:    2:using namespace std;         //Using C＋＋ Standard Library
+        -:    3:const char wstr[][20] = {"Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};    //String array for the day of the week
+        -:    4:
+    81412:    5:int days_of_year(int year)   //  Return the number of days of year
+        -:    6:{ 
+    81412:    7:    if (year % 100 == 0) {
+    18652:    8:        if (year % 400 == 0 ) {
+    18384:    9:            return 366;
+        -:   10:        } else {
+      268:   11:            return 365;
+        -:   12:        }
+        -:   13:    }
+    62760:   14:    if (year % 4 == 0 ) {
+    14918:   15:        return 365; //return 366;   ### bug line! ###
+        -:   16:    } else {
+    47842:   17:        return 365;
+        -:   18:    }
+        -:   19:}
+        -:   20:
+    25806:   21:int days_of_month(int month, int year) // Return the number of days of month in year
+        -:   22:{ 
+    25806:   23:    if (month == 2) {
+     6220:   24:        if (days_of_year(year)==366) {
+     5241:   25:            return 29;
+        -:   26:        } else {
+      979:   27:            return 28;
+        -:   28:        }
+        -:   29:    }
+        -:   30:    int d;
+    19586:   31:    switch (month) {
+        -:   32:        case 1: case 3: case 5: case 7: case 8:
+        -:   33:        case 10: case 12:
+    15156:   34:            d = 31;
+    15156:   35:            break;
+        -:   36:        default:
+     4430:   37:            d = 30;
+        -:   38:    }
+    19586:   39:    return d;
+        -:   40:}
+        -:   41:
+     4228:   42:int main(void)
+        -:   43:{
+        -:   44:    int n;
+     4228:   45:    cin >> n;          //Input the first test case
+    12684:   46:    while (n >= 0) {
+        -:   47:        int year, month, day, week;
+     4228:   48:        week = n % 7; // use January 1, 2000 (Saturday) as the benchmark and the beginning of a week
+     4228:   49:        year = 2000;
+     4228:   50:        month = 1;
+     4228:   51:        day = 1;
+    94362:   52:        while (n) {
+    45067:   53:            if (n >= days_of_year(year)) { // Calculate the year
+    30125:   54:                n -= days_of_year(year);
+    30125:   55:                ++year;
+    14942:   56:            } else if (n >= days_of_month(month, year)) { // Calculate the month
+    10864:   57:                n -= days_of_month(month, year);
+    10864:   58:                ++month;
+        -:   59:            } else { // Calculate the day
+     4078:   60:                day += n;
+     4078:   61:                n = 0;
+        -:   62:            }
+        -:   63:        }
+        -:   64:   //Output the date and the day of the week
+     4228:   65:        cout << year << '-' << (month < 10 ? "0" : "") << month << '-'
+     8456:   66:            << (day < 10 ? "0" : "") << day << ' ' << wstr[week] << endl;
+     4228:   67:        cin >> n; //Input the next test case
+        -:   68:    }
+     4228:   69:    return 0;
+    12684:   70:}
