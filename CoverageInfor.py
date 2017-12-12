@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 import pprint
+
+fileDir = "gcovResult/"
+testCaseNum = 5000;
+
 class CoverageInfor:
 
 	def __init__(self):
@@ -19,15 +23,22 @@ class CoverageInfor:
 	    return i + 1
 
 	def readGcov(self):
-		info = self.make2dList(self.file_len("example0.gcov"), 4)
+		info = self.make2dList(self.file_len(fileDir + "example0.gcov"), 4)
 		infoDict = {}
-		result = ["t","t","t","t","t", "t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t","t"]
+		result = [];
+
+		# TODO: judge test case result;
+		for i in range(testCaseNum):
+			result.append('t')
+		file = open(fileDir+"bug_cases.txt")
+		for line in file:
+			result[(int)(line)] = 'f'
 
 		# [t+e; t+ue; f+e; f+ue]
-		for j in range(0,51):
+		for j in range(testCaseNum):
 			filePathI = "example"
 			filePathII = ".gcov"
-			filePath = filePathI + str(j) + filePathII
+			filePath = fileDir + filePathI + str(j) + filePathII
 
 			file = open(filePath, "r")		
 			if result[j] == "t"	: 

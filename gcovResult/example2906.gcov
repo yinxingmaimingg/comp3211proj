@@ -1,0 +1,47 @@
+        -:    0:Source:testCase1-bug.cpp
+        -:    0:Graph:testCase1-bug.gcno
+        -:    0:Data:testCase1-bug.gcda
+        -:    0:Runs:2907
+        -:    0:Programs:1
+        -:    1:#include <iostream>                     // Preprocessor Directive
+        -:    2:using namespace std;                    // Using C＋＋ Standard Libeary
+        -:    3:const int n = 9;                         //The number of terms of a polynomial
+    18423:    4:inline int fabs(int k)                     // Return the absolute value of k
+        -:    5:{ 
+    18423:    6:    return k < 0 ? -k : k;
+        -:    7:}
+     5814:    8:int main(void)                          // Main function
+        -:    9:{ 
+        -:   10:    int a[n];
+     8721:   11:    while (cin >> a[0]) {               // Input coefficients
+    26163:   12:        for (int i = 1; i < n; i++)  
+    23256:   13:            cin >> a[i];
+     2907:   14:        bool first = true;              // Set the mark for the first term
+    29070:   15:        for (int i = 0; i < n; i++)
+    26163:   16:            if (a[i]) {               //Output non-zero terms
+    12534:   17:                if (first) {           // Deal with the first term
+     2898:   18:                    if (a[i] == -1 && i < n - 1)    // The current term is -1
+      133:   19:                        cout << "";
+     2765:   20:                    else if (a[i] != 1 || i == n - 1)   // The current is not 1
+     2622:   21:                        cout << a[i];
+     2898:   22:                    if (i == n - 2) // If the exponent is 1, don’t output the exponent; else output the exponent.
+        9:   23:                        cout << 'x';
+     2889:   24:                    else if (i < n - 1)           
+     2877:   25:                        cout << "x^" << n - i - 1;
+     2898:   26:                    first = false;  // Reserve the mark of the first term of the polynomial
+        -:   27:                } else {         //Output the sign and the absolute value
+     9636:   28:                    cout << ' ' << (a[i] < 0 ? '-' : '+') << ' ';  //Output the sign
+     9636:   29:                    if (fabs(a[i]) != 1 || i == n - 1)         //If the coefficient is 1, don’t output it
+     8787:   30:                        cout << fabs(a[i]);
+     9636:   31:                    if (i == n - 2)  // If the exponent is 1, don’t output the exponent; else output the exponent.
+     1374:   32:                        cout << 'x';
+     8262:   33:                    else if (i < n - 1)
+     6853:   34:                        cout << "x^" << n - i - 1;
+        -:   35:                }
+        -:   36:            }
+     2907:   37:        if (first)                  // If all coefficients are 0, output 0.
+        9:   38:            cout << 0;
+     2907:   39:        cout << endl;
+        -:   40:    }
+     2907:   41:    return 0;
+     8721:   42:}
