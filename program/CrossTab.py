@@ -42,11 +42,11 @@ def rankBySuspicious(statementStatistic):
     suspiciousness = [];
     i = 0;
     for statement in statementStatistic:
-        i += 1;
         if statement[0] != -1:
             suspiciousness.append([i, getSuspiciousValueForEachStatement(statement)]);
-    sorted(suspiciousness, key=itemgetter(1), reverse=True)
-    return suspiciousness;
+        i += 1;
+    sus = sorted(suspiciousness, key=itemgetter(1), reverse=True)
+    return sus;
 
 def getCrossTableForEachStatement(statement):
     passCover = statement[0];
@@ -58,4 +58,28 @@ def getCrossTableForEachStatement(statement):
     totalCover = passCover + failCover;
     totalNotCover = passNotCover + failNotCover;
     totalTest = totalPass + totalFail;
+    if totalCover == 0:
+        totalCover += 1;
+    if totalNotCover == 0:
+        totalNotCover += 1;
     return [[passCover,passNotCover, totalPass], [failCover,failNotCover,totalFail], [totalCover,totalNotCover,totalTest]];
+
+def preProcess(doc):
+    f = open(doc, 'r');
+    statistic = [[-1,-1,-1,-1,-1]] * 1000;
+    max = -1;
+    for line in f:
+        lineElement = line.split();
+        index = int(lineElement[0][:-1]);
+        if index > max:
+            max = index;
+        element1 = int(lineElement[1][1:]);
+        element2 = int(lineElement[2]);
+        element3 = int(lineElement[3]);
+        element4 = int(lineElement[4][:-1]);
+        statistic[index] = [element1, element2, element3, element4];
+    return statistic, max;
+
+statistic, max = preProcess('./test/2.txt');
+rank = rankBySuspicious(statistic);
+print(rank);
