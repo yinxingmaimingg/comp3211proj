@@ -17,7 +17,7 @@ tempTrash="tempTrash.txt"
 
 # commands
 
-for ((j=6; j<7; j++))
+for ((j=0; j<10; j++))
 do 
 	cd $testDir
 	g++ $correctProgram$cpp -o $correctProgram
