@@ -21,6 +21,8 @@ def cotingencyCoefficient(chiSquareValue, totalTest):
     return chiSquareValue / totalTest;
 
 def getStatisticValue(crossTab):
+    if crossTab[0][0] == 0:
+        crossTab[0][0] = 1;
     return (crossTab[1][0] / crossTab[1][2]) / (crossTab[0][0] / crossTab[0][2]);
 
 def getSuspiciousValue(cotingencyCoefficient, statisticValue):
@@ -62,6 +64,10 @@ def getCrossTableForEachStatement(statement):
         totalCover += 1;
     if totalNotCover == 0:
         totalNotCover += 1;
+    if totalFail == 0:
+        totalFail = 1;
+    if totalPass == 0:
+        totalPass = 1;
     return [[passCover,passNotCover, totalPass], [failCover,failNotCover,totalFail], [totalCover,totalNotCover,totalTest]];
 
 def preProcess(doc):
@@ -80,6 +86,8 @@ def preProcess(doc):
         statistic[index] = [element1, element2, element3, element4];
     return statistic, max;
 
-statistic, max = preProcess('./test/2.txt');
-rank = rankBySuspicious(statistic);
-print(rank);
+
+for i in range(10):
+    statistic, max = preProcess("./test/coverage_2_" + str(i) + ".txt");
+    rank = rankBySuspicious(statistic);
+    print(str(i) + ": " + str(rank));
