@@ -29,12 +29,12 @@ int days_of_month(int month, int year) // Return the number of days of month in 
     }
     int d;
     switch (month) {
-        case 1: case 3: case 5: case 7: case 9:
+        case 1: case 3: case 5: case 7: case 8:
         case 10: case 12:
             d = 31;
             break;
         default:
-            d = 30;
+            d = 31;
     }
     return d;
 }

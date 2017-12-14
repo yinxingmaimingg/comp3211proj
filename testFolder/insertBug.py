@@ -22,7 +22,7 @@ bugInfor = [
 		[23, "if (month == 2){", "if (month == 1){"],
 		[24, "if (days_of_year(year)==366)", "if (days_of_year(year)==365)"],
 		[25, "return 29;", "return 28;"],
-		[32, "case 1: case 3: case 5: case 7: case 8:", "case 1: case 3: case 5: case 7: case 9:"],
+		[37, "d = 30;", "d = 31;"],
 		[55, "++year;", "year += 2;"],
 		[57, "n -= days_of_month(month, year);", "n += days_of_month(month, year);"],
 		[60, "day += n;", "day = n;"]
