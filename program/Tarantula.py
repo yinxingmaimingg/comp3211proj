@@ -2,8 +2,12 @@ from operator import itemgetter
 
 def getSuspiciousnessForEachStatement(statementStatistic):
     passed = statementStatistic[0];
+    if passed == 0:
+        passed = 1;
     totalPassed = statementStatistic[1] + passed;
     failed = statementStatistic[2];
+    if failed == 0:
+        failed = 1;
     totalFailed = statementStatistic[3] + failed;
     hue = (passed / totalPassed) / (passed / totalPassed + failed / totalFailed);
     suspiciousness = 1 - hue;
@@ -48,9 +52,7 @@ def preProcess(doc):
         element4 = int(lineElement[4][:-1]);
         statistic[index] = [element1, element2, element3, element4];
     return statistic, max;
-
-
-
-statistic, max = preProcess('./test/2.txt');
-rank = rankBySuspiciousness(statistic);
-print(rank);
+for i in range(10):
+    statistic, max = preProcess("./test/coverage_2_" + str(i) + ".txt");
+    rank = rankBySuspiciousness(statistic);
+    print(str(i) + ": " + str(rank));
