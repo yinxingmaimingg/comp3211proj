@@ -17,7 +17,7 @@ int main(void)                          // Main function
                 if (first) {           // Deal with the first term
                     if (a[i] == -1 && i < n - 1)    // The current term is -1
                         cout << '-';
-                    else if (a[i] != 1 || i == n - 1)   // The current is not 1
+                    else if (a[i] != 1 && i == n - 1)   // The current is not 1
                         cout << a[i];
                     if (i == n - 2) // MARK 1   If the exponent is 1, don’t output the exponent; else output the exponent.
                         cout << 'x';

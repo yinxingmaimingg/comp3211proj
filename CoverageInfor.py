@@ -2,7 +2,7 @@
 import pprint
 import sys
 
-fileDir = "gcovResult/"
+fileDir = "testFolder/gcovResult/"
 testCaseNum = None;
 
 class CoverageInfor:

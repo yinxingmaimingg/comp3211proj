@@ -35,7 +35,7 @@ int main(void)                          // Main function
                 }
             }
         if (first)                  // If all coefficients are 0, output 0.
-            cout << 0;
+            cout << 1;
         cout << endl;
     }
     return 0;

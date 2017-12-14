@@ -30,7 +30,7 @@ int main(void)                          // Main function
                         cout << fabs(a[i]);
                     if (i == n - 2) // MARK 2   If the exponent is 1, don’t output the exponent; else output the exponent.
                         cout << 'x';
-                    else if (i < n - 1) // MARK 2
+                    else if (i < n + 1) // MARK 2
                         cout << "x^" << n - i - 1; // MARK 2
                 }
             }

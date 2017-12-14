@@ -22,7 +22,7 @@ int days_of_month(int month, int year) // Return the number of days of month in 
 { 
     if (month == 2){
         if (days_of_year(year)==366) {
-            return 29;
+            return 28;
         } else {
             return 28;
         }

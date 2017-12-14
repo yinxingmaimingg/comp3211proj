@@ -5,7 +5,7 @@ const char wstr[][20] = {"Saturday", "Sunday", "Monday", "Tuesday", "Wednesday",
 int days_of_year(int year)   //  Return the number of days of year
 { 
     if (year % 100 == 0) {
-        if (year % 400 == 0) {
+        if (year % 40 == 0) {
             return 366;
         } else {
             return 365;

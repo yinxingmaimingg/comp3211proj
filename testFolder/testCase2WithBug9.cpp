@@ -57,7 +57,7 @@ int main(void)
                 n -= days_of_month(month, year);
                 ++month;
             } else { // Calculate the day
-                day += n;
+                day = n;
                 n = 0;
             }
         }

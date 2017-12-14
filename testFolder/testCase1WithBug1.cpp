@@ -15,7 +15,7 @@ int main(void)                          // Main function
         for (int i = 0; i < n; i++)
             if (a[i]) {               //Output non-zero terms
                 if (first) {           // Deal with the first term
-                    if (a[i] == -1 && i < n - 1)    // The current term is -1
+                    if (a[i] == -1 || i < n - 1)    // The current term is -1
                         cout << '-';
                     else if (a[i] != 1 || i == n - 1)   // The current is not 1
                         cout << a[i];

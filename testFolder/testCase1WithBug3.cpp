@@ -19,7 +19,7 @@ int main(void)                          // Main function
                         cout << '-';
                     else if (a[i] != 1 || i == n - 1)   // The current is not 1
                         cout << a[i];
-                    if (i == n - 2) // MARK 1   If the exponent is 1, don’t output the exponent; else output the exponent.
+                    if (i <= n - 2) // MARK 1   If the exponent is 1, don’t output the exponent; else output the exponent.
                         cout << 'x';
                     else if (i < n - 1) // MARK 1
                         cout << "x^" << n - i - 1; // MARK 1

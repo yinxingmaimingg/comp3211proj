@@ -52,7 +52,7 @@ int main(void)
         while (n) {
             if (n >= days_of_year(year)) { // Calculate the year
                 n -= days_of_year(year);
-                ++year;
+                year += 2;
             } else if (n >= days_of_month(month, year)) { // Calculate the month
                 n -= days_of_month(month, year);
                 ++month;

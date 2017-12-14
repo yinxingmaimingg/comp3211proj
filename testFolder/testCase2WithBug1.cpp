@@ -11,7 +11,7 @@ int days_of_year(int year)   //  Return the number of days of year
             return 365;
         }
     }
-    if (year % 4 == 0) {
+    if (year % 4 != 0) {
         return 366; // MARK 1
     } else {
         return 365;

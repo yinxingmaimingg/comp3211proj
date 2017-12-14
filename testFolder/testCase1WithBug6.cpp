@@ -25,7 +25,7 @@ int main(void)                          // Main function
                         cout << "x^" << n - i - 1; // MARK 1
                     first = false;  // Reserve the mark of the first term of the polynomial
                 } else {         //Output the sign and the absolute value
-                    cout << ' ' << (a[i] < 0 ? '-' : '+') << ' ';  //Output the sign
+                    cout << ' ' << (a[i] < 10 ? '-' : '+') << ' ';  //Output the sign
                     if (fabs(a[i]) != 1 || i == n - 1)         //If the coefficient is 1, don’t output it
                         cout << fabs(a[i]);
                     if (i == n - 2) // MARK 2   If the exponent is 1, don’t output the exponent; else output the exponent.

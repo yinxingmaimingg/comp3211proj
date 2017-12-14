@@ -21,7 +21,7 @@ int main(void)                          // Main function
                         cout << a[i];
                     if (i == n - 2) // MARK 1   If the exponent is 1, don’t output the exponent; else output the exponent.
                         cout << 'x';
-                    else if (i < n - 1) // MARK 1
+                    else if (i < n + 1) // MARK 1
                         cout << "x^" << n - i - 1; // MARK 1
                     first = false;  // Reserve the mark of the first term of the polynomial
                 } else {         //Output the sign and the absolute value

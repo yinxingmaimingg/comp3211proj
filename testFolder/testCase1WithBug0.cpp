@@ -3,7 +3,7 @@ using namespace std;                    // Using C＋＋ Standard Libeary
 const int n = 9;                         //The number of terms of a polynomial
 inline int fabs(int k)                     // Return the absolute value of k
 { 
-    return k < 0 ? -k : k;
+    return k > 0 ? -k : k;
 }
 int main(void)                          // Main function
 { 

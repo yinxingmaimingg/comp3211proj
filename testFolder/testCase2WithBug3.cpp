@@ -20,7 +20,7 @@ int days_of_year(int year)   //  Return the number of days of year
 
 int days_of_month(int month, int year) // Return the number of days of month in year
 { 
-    if (month == 2){
+    if (month == 1){
         if (days_of_year(year)==366) {
             return 29;
         } else {

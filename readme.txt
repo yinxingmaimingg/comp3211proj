@@ -1,7 +1,7 @@
 
 To run test cases and get coverage information, run:
 	
-	./init.sh
+	./init.sh [testCaseNo]
 
 
 To change number of test cases, modify loopMax in init.sh.
