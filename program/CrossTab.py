@@ -86,6 +86,10 @@ def preProcess(doc):
         statistic[index] = [element1, element2, element3, element4];
     return statistic, max;
 
+for i in range(10):
+    statistic, max = preProcess("./test/coverage_1_" + str(i) + ".txt");
+    rank = rankBySuspicious(statistic);
+    print(str(i) + ": " + str(rank));
 
 for i in range(10):
     statistic, max = preProcess("./test/coverage_2_" + str(i) + ".txt");
