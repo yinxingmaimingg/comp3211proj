@@ -52,7 +52,13 @@ def preProcess(doc):
         element4 = int(lineElement[4][:-1]);
         statistic[index] = [element1, element2, element3, element4];
     return statistic, max;
+
 for i in range(10):
-    statistic, max = preProcess("./test/coverage_2_" + str(i) + ".txt");
+    statistic, max = preProcess("../coverage/coverage_1_" + str(i) + ".txt");
+    rank = rankBySuspiciousness(statistic);
+    print(str(i) + ": " + str(rank));
+
+for i in range(10):
+    statistic, max = preProcess("../coverage/coverage_2_" + str(i) + ".txt");
     rank = rankBySuspiciousness(statistic);
     print(str(i) + ": " + str(rank));
