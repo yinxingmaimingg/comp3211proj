@@ -87,11 +87,11 @@ def preProcess(doc):
     return statistic, max;
 
 for i in range(10):
-    statistic, max = preProcess("./test/coverage_1_" + str(i) + ".txt");
+    statistic, max = preProcess("../coverage/coverage_1_" + str(i) + ".txt");
     rank = rankBySuspicious(statistic);
     print(str(i) + ": " + str(rank));
 
 for i in range(10):
-    statistic, max = preProcess("./test/coverage_2_" + str(i) + ".txt");
+    statistic, max = preProcess("../coverage/coverage_2_" + str(i) + ".txt");
     rank = rankBySuspicious(statistic);
     print(str(i) + ": " + str(rank));
