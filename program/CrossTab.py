@@ -85,6 +85,25 @@ def preProcess(doc):
         element4 = int(lineElement[4][:-1]);
         statistic[index] = [element1, element2, element3, element4];
     return statistic, max;
+
+def deleteUnuse(origin, out):
+    f = open(origin,'r');
+    o = open(out, 'w');
+    for line in f:
+        str = '';
+        for i in line:
+            if i == "{" or i == "}" or i == ",":
+                continue;
+            else:
+                str += i;
+        o.write(str);
+    f.close();
+    o.close();
+
+for i in range(10):
+    deleteUnuse("../coverage/coverage_1_" + str(i) + ".txt", "../CoverageUsed/coverage_1_" + str(i) + ".txt");
+    deleteUnuse("../coverage/coverage_2_" + str(i) + ".txt", "../CoverageUsed/coverage_2_" + str(i) + ".txt");
+    
 for i in range(10):
     statistic, max = preProcess("../CoverageUsed/coverage_1_" + str(i) + ".txt");
     rank = rankBySuspicious(statistic);
