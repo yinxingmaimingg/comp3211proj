@@ -59,15 +59,43 @@ for i in range(10):
 
 for i in range(10):
     statistic, max = preProcess("../CoverageUsed/coverage_1_" + str(i) + ".txt");
-    rank = rankBySuspiciousness(statistic);
+    f = open("../coverage/bugLocation_1_" + str(i) + ".txt");
+    for line in f:
+        lineElement = line.split("#");
+        hit = lineElement[0];
+    rank = rankBySuspicious(statistic);
     print("\nProblem 1 Bug Program:" + str(i) + ": ");
+    previous = 100;
+    count = 0;
+    final = 0;
     for item in rank:
+        if item[1] != previous:
+            count += 1;
+        previous = item [1];
+        if str(item[0]) == str(hit):
+            print(str(item[0]) + ": " + str(item[1]) + "     hit ");
+            final = count;
         print(str(item[0]) + ": " + str(item[1]));
+    print("The buggy line rank: " + str(final));
 
 
 for i in range(10):
     statistic, max = preProcess("../CoverageUsed/coverage_2_" + str(i) + ".txt");
-    rank = rankBySuspiciousness(statistic);
-    print("\nProblem 2 Bug Program:" + str(i) + ": ");
+    f = open("../coverage/bugLocation_2_" + str(i) + ".txt");
+    for line in f:
+        lineElement = line.split("#");
+        hit = lineElement[0];
+    rank = rankBySuspicious(statistic);
+    print("\nProblem 1 Bug Program:" + str(i) + ": ");
+    previous = 100;
+    count = 0;
+    final = 0;
     for item in rank:
+        if item[1] != previous:
+            count += 1;
+        previous = item [1];
+        if str(item[0]) == str(hit):
+            print(str(item[0]) + ": " + str(item[1]) + "     hit ");
+            final = count;
         print(str(item[0]) + ": " + str(item[1]));
+    print("The buggy line rank: " + str(final));
