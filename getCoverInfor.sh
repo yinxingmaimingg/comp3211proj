@@ -44,7 +44,7 @@ do
 	done
 
 	cd ..
-	python CoverageInfor.py $loopMax > "coverage/coverage_"$testCaseNo"_"$j".txt"
+	python CoverageInfor.py $loopMax > "test_coverage/coverage_"$testCaseNo"_"$j".txt"
 done
 
 #<<rmUseless

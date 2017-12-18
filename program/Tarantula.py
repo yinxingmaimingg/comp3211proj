@@ -56,9 +56,14 @@ def preProcess(doc):
 for i in range(10):
     statistic, max = preProcess("../coverage/coverage_1_" + str(i) + ".txt");
     rank = rankBySuspiciousness(statistic);
-    print(str(i) + ": " + str(rank));
+    print("\nProblem 1 Bug Program:" + str(i) + ": ");
+    for item in rank:
+        print(str(item[0]) + ": " + str(item[1]));
+
 
 for i in range(10):
     statistic, max = preProcess("../coverage/coverage_2_" + str(i) + ".txt");
     rank = rankBySuspiciousness(statistic);
-    print(str(i) + ": " + str(rank));
+    print("\nProblem 2 Bug Program:" + str(i) + ": ");
+    for item in rank:
+        print(str(item[0]) + ": " + str(item[1]));
