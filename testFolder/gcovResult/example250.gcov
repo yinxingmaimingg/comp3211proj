@@ -34,9 +34,9 @@
         4:   29:                    if (fabs(a[i]) != 1 || i == n - 1)         //If the coefficient is 1, don’t output it
         4:   30:                        cout << fabs(a[i]);
         4:   31:                    if (i == n - 2) // MARK 2   If the exponent is 1, don’t output the exponent; else output the exponent.
-    #####:   32:                        cout << 'x';
-        4:   33:                    else if (i < n - 1) // MARK 2
-        4:   34:                        cout << "x^" << n - i - 1; // MARK 2
+        1:   32:                        cout << 'x';
+        3:   33:                    else if (i < n - 1) // MARK 2
+        3:   34:                        cout << "x^" << n - i - 1; // MARK 2
         -:   35:                }
         -:   36:            }
         1:   37:        if (first)                  // If all coefficients are 0, output 0.

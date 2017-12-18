@@ -1,4 +1,4 @@
-File 'testCase1WithBug1.cpp'
+File 'testCase1WithBug0.cpp'
 Lines executed:83.87% of 31
-Creating 'testCase1WithBug1.cpp.gcov'
+Creating 'testCase1WithBug0.cpp.gcov'
 

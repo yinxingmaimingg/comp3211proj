@@ -1,14 +1,14 @@
-        -:    0:Source:testCase1WithBug1.cpp
-        -:    0:Graph:testCase1WithBug1.gcno
-        -:    0:Data:testCase1WithBug1.gcda
+        -:    0:Source:testCase1WithBug0.cpp
+        -:    0:Graph:testCase1WithBug0.gcno
+        -:    0:Data:testCase1WithBug0.gcda
         -:    0:Runs:1
         -:    0:Programs:1
         -:    1:#include <iostream>                     // Preprocessor Directive
         -:    2:using namespace std;                    // Using C＋＋ Standard Libeary
         -:    3:const int n = 9;                         //The number of terms of a polynomial
-        9:    4:inline int fabs(int k)                     // Return the absolute value of k
+        6:    4:inline int fabs(int k)                     // Return the absolute value of k
         -:    5:{ 
-        9:    6:    return k < 0 ? -k : k;
+        6:    6:    return k > 0 ? -k : k;
         -:    7:}
         2:    8:int main(void)                          // Main function
         -:    9:{ 
@@ -19,24 +19,24 @@
         1:   14:        bool first = true;              // Set the mark for the first term
        10:   15:        for (int i = 0; i < n; i++)
         9:   16:            if (a[i]) {               //Output non-zero terms
-        6:   17:                if (first) {           // Deal with the first term
-        1:   18:                    if (a[i] == -1 || i < n - 1)    // The current term is -1
-        1:   19:                        cout << '-';
-    #####:   20:                    else if (a[i] != 1 || i == n - 1)   // The current is not 1
-    #####:   21:                        cout << a[i];
+        4:   17:                if (first) {           // Deal with the first term
+        1:   18:                    if (a[i] == -1 && i < n - 1)    // The current term is -1
+    #####:   19:                        cout << '-';
+        1:   20:                    else if (a[i] != 1 || i == n - 1)   // The current is not 1
+        1:   21:                        cout << a[i];
         1:   22:                    if (i == n - 2) // MARK 1   If the exponent is 1, don’t output the exponent; else output the exponent.
     #####:   23:                        cout << 'x';
         1:   24:                    else if (i < n - 1) // MARK 1
         1:   25:                        cout << "x^" << n - i - 1; // MARK 1
         1:   26:                    first = false;  // Reserve the mark of the first term of the polynomial
         -:   27:                } else {         //Output the sign and the absolute value
-        5:   28:                    cout << ' ' << (a[i] < 0 ? '-' : '+') << ' ';  //Output the sign
-        5:   29:                    if (fabs(a[i]) != 1 || i == n - 1)         //If the coefficient is 1, don’t output it
-        4:   30:                        cout << fabs(a[i]);
-        5:   31:                    if (i == n - 2) // MARK 2   If the exponent is 1, don’t output the exponent; else output the exponent.
-    #####:   32:                        cout << 'x';
-        5:   33:                    else if (i < n - 1) // MARK 2
-        5:   34:                        cout << "x^" << n - i - 1; // MARK 2
+        3:   28:                    cout << ' ' << (a[i] < 0 ? '-' : '+') << ' ';  //Output the sign
+        3:   29:                    if (fabs(a[i]) != 1 || i == n - 1)         //If the coefficient is 1, don’t output it
+        3:   30:                        cout << fabs(a[i]);
+        3:   31:                    if (i == n - 2) // MARK 2   If the exponent is 1, don’t output the exponent; else output the exponent.
+        1:   32:                        cout << 'x';
+        2:   33:                    else if (i < n - 1) // MARK 2
+        1:   34:                        cout << "x^" << n - i - 1; // MARK 2
         -:   35:                }
         -:   36:            }
         1:   37:        if (first)                  // If all coefficients are 0, output 0.

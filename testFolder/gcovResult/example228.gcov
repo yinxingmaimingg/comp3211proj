@@ -36,7 +36,7 @@
         2:   31:                    if (i == n - 2) // MARK 2   If the exponent is 1, don’t output the exponent; else output the exponent.
     #####:   32:                        cout << 'x';
         2:   33:                    else if (i < n - 1) // MARK 2
-        1:   34:                        cout << "x^" << n - i - 1; // MARK 2
+        2:   34:                        cout << "x^" << n - i - 1; // MARK 2
         -:   35:                }
         -:   36:            }
         1:   37:        if (first)                  // If all coefficients are 0, output 0.
